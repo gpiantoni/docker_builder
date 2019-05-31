@@ -11,14 +11,14 @@ services:
 before_install:
   - pip install neurodocker
   - neurodocker generate docker 
-    --base=neurodebian:buster-non-free --pkg-manager=apt \
-    --install apt-utils git ssh python3-pip gcc python3-setuptools python3-dev python3-wheel \
-    file \
-    graphviz \
-    --run 'pip3 install git+https://github.com/gpiantoni/intraop.git#egg=intraop[test]' \
-    --user neuro \
-    --env USER=neuro \
-    --env PATH='${PATH}:/home/neuro/.local/bin:/home/neuro/docker' \
+    --base=neurodebian:buster-non-free --pkg-manager=apt 
+    --install apt-utils git ssh python3-pip gcc python3-setuptools python3-dev python3-wheel 
+    file 
+    graphviz 
+    --run 'pip3 install git+https://github.com/gpiantoni/intraop.git#egg=intraop[test]' 
+    --user neuro 
+    --env USER=neuro 
+    --env PATH='${PATH}:/home/neuro/.local/bin:/home/neuro/docker' 
     > dockerfile
 
   # use the same user UID for travis / docker
