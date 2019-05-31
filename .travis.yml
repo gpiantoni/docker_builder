@@ -27,7 +27,7 @@ before_install:
   - cat dockerfile
 
 install:
-  - docker build --tag gpiantoni/neurotools:$TRAVIS_TAG .
+  - docker build --tag gpiantoni/neurotools:$TRAVIS_BRANCH .
 
 script:
   - docker run 
@@ -35,7 +35,7 @@ script:
     -v $TRAVIS_BUILD_DIR:/home/neuro 
     -w /home/neuro 
     --user neuro 
-    gpiantoni/neurotools:$TRAVIS_TAG
+    gpiantoni/neurotools:$TRAVIS_BRANCH
     python3 -c "import intraop; print(intraop); exit"
 
 after_success:
