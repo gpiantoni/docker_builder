@@ -28,7 +28,9 @@ before_install:
   - cat dockerfile
 
 install:
+  - while sleep 9m; do echo "=====[ $SECONDS seconds still running ]====="; done &
   - docker build --tag gpiantoni/neurotools:$TRAVIS_BRANCH .
+  - kill %1
 
 script:
   - docker run 
